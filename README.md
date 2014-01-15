@@ -1,4 +1,4 @@
-=== Neo4j Social Graph Example ===
+### Neo4j Social Graph Example ###
 
 This sample code uses Neo4j to gather friends, friends of friends, and suggested friends 
 from an initial JSON dataset.
