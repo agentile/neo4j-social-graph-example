@@ -10,7 +10,7 @@ Then one can run
 ```
 php index.php
 
-php -S localhost:8000 router.php
+php -S localhost:8000 router.php &
 
 curl http://localhost:8000/user/{id}
 curl http://localhost:8000/user/{id}/friends
