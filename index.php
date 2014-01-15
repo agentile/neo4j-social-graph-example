@@ -1,26 +1,19 @@
 <?php
+/**
+ * Add our data to Neo4j index.
+ * 
+ * @link https://github.com/agentile/neo4j-social-graph-example
+ * @version 0.1.0
+ * @author Anthony Gentile <asgentile@gmail.com>
+ */    
 require 'vendor/autoload.php';
 require 'vendor/cargomedia/socialgraph.php';
+
+$time_start = microtime(true);
 
 $sg = new CargoMedia\SocialGraph('data.json');
 $sg->indexData();
 
-foreach ($sg->getNodes() as $node) {
-    // Direct friends
-    echo $node->getProperty('firstName') . ' ' . $node->getProperty('surname') . ' is friends with: ' . PHP_EOL;
-    $friends = $sg->fetchFriends($node->getProperty('id'));
-    foreach ($friends as $f) {
-        echo $f['firstName'] . ' ' . $f['surname'] . PHP_EOL;
-    }
-    echo '---------' . PHP_EOL;
-    
-    // Friends of friends
-    echo "The friends of friends for " . $node->getProperty('firstName') . ' ' . $node->getProperty('surname') . ' are: ' . PHP_EOL;
-    $fof = $sg->fetchFriendsOfFriends($node->getProperty('id'));
-    foreach ($fof as $f) {
-        echo $f['firstName'] . ' ' . $f['surname'] . PHP_EOL;
-    }
-    echo '---------' . PHP_EOL;
-}
+$elapsed_time = microtime(true) - $time_start;
 
-
+echo "Time to index: $elapsed_time seconds" . PHP_EOL;

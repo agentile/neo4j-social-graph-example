@@ -8,9 +8,12 @@ Follow the instructions in the INSTALL document to acquire needed dependencies.
 Then one can run 
 
 ```
-php -S localhost:8000
+php index.php
 
-curl http://localhost:8000/v1/user/{id}/friends
-curl http://localhost:8000/v1/user/{id}/fof
-curl http://localhost:8000/v1/user/{id}/friend-suggesstions
+php -S localhost:8000 router.php
+
+curl http://localhost:8000/user/{id}
+curl http://localhost:8000/user/{id}/friends
+curl http://localhost:8000/user/{id}/fof
+curl http://localhost:8000/user/{id}/friend-suggesstions
 ```
